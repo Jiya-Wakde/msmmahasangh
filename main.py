@@ -10,8 +10,8 @@ from flask_login import UserMixin, login_user, LoginManager, login_required, cur
 import os
 
 app = Flask(__name__, static_url_path='/static')
-app.config['SECRET_KEY'] = "TheGreastesttimeTravlingDeviceisTimeSTONE"
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///user.db"
+app.config['SECRET_KEY'] = os.environ.get('FLASK_KEY')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DB_URI", "sqlite:///posts.db")
 
 # Initialize extensions
 csrf = CSRFProtect(app)
