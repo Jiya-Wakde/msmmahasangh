@@ -36,17 +36,17 @@ def load_user(user_id):
 doc_folder_path = os.path.join(app.root_path, 'static', 'confidential_doc')
 
 
-# with app.app_context():
-#     db.drop_all()
-#     db.create_all()
-#
-# with app.app_context():
-#     password = generate_password_hash("Testing101", method='pbkdf2:sha256', salt_length=8)
-#     new_user = User(name="Admin", password=password)
-#     db.session.add(new_user)
-#     db.session.commit()
-#
-#     print("User created successfully.")
+with app.app_context():
+    db.drop_all()
+    db.create_all()
+
+with app.app_context():
+    password = generate_password_hash(os.environ.get('PASSWORD'), method='pbkdf2:sha256', salt_length=8)
+    new_user = User(name="Admin", password=password)
+    db.session.add(new_user)
+    db.session.commit()
+
+    print("User created successfully.")
 
 # Form for login
 class MyForm(FlaskForm):
