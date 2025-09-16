@@ -439,6 +439,11 @@ button {
       margin-left: auto;
       margin-right: auto; /* Center the nav items */
   }
+  .navbar-toggler {
+    display: blocks !important;
+    visibility: visible !important;
+    height: auto !important;
+  }
 }
 
 @media (max-width: 991.98px) {
